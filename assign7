@@ -1,0 +1,95 @@
+package asssign7;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
+
+public class NewTest {
+  @Test
+  public void f() throws InterruptedException {
+	  WebDriver driver= new ChromeDriver();
+	  driver.get("https://globalsqa.com/angularJs-protractor/BankingProject");
+	  Thread.sleep(3000);
+	  driver.findElement(By.xpath("//button[@ng-click='manager()']")).click();
+	  Thread.sleep(4000);
+	  driver.findElement(By.xpath("//button[@class='btn btn-lg tab'][1]")).click();
+	  Thread.sleep(4000);
+	  driver.findElement(By.xpath("//input[@placeholder='First Name']")).sendKeys("M");
+	  driver.findElement(By.xpath("//input[@placeholder='Last Name']")).sendKeys("Shoaib");
+	  driver.findElement(By.xpath("//input[@placeholder='Post Code']")).sendKeys("1001");
+	  
+	  driver.findElement(By.xpath("//button[@type='submit']")).click();
+	  Thread.sleep(1000);
+	  driver.switchTo().alert().accept();
+	  
+	  Thread.sleep(2000);
+	  
+	  driver.findElement(By.xpath("//button[@ng-class='btnClass2']")).click();
+	  Thread.sleep(3000);
+	  
+	  WebElement dropdown= driver.findElement(By.xpath("//select[@name='userSelect']"));
+	  Select names=new Select(dropdown);
+	  names.selectByVisibleText("M Shoaib");
+	  
+	  WebElement currencydd= driver.findElement(By.id("currency"));
+	  Select currency=new Select(currencydd);
+	  currency.selectByVisibleText("Rupee");
+	  
+	  driver.findElement(By.xpath("//button[@type='submit']")).click();
+	  Thread.sleep(2000);
+	  driver.switchTo().alert().accept();
+	  
+	  driver.findElement(By.xpath("//button[@class='btn home']")).click();
+	  Thread.sleep(2000);
+	  
+	  driver.findElement(By.xpath("//button[@ng-click='customer()']")).click();
+	  
+	  Thread.sleep(2000);
+	  WebElement username= driver.findElement(By.xpath("//select[@id='userSelect']"));
+	  Select name=new Select(username);
+	  name.selectByVisibleText("M Shoaib");
+	  Thread.sleep(2000);
+	  
+	  driver.findElement(By.xpath("//button[@type='submit']")).click();
+	  Thread.sleep(2000);
+	  
+	 
+	  
+	  driver.findElement(By.xpath("//button[@ng-class='btnClass2']")).click();
+	  Thread.sleep(1000);
+	  driver.findElement(By.xpath("//input[@type='number']")).sendKeys("10000");
+	  
+	  driver.findElement(By.xpath("//button[@type='submit']")).click();
+	  
+	  Thread.sleep(2000);
+	  
+	  driver.findElement(By.xpath("//button[@ng-class='btnClass3']")).click();
+	  
+	  Thread.sleep(2000);
+	  
+	  driver.findElement(By.xpath("//input[@ng-model='amount']")).sendKeys("2000");
+	  
+	  driver.findElement(By.xpath("//button[@type='submit']")).click();
+	  
+	  Thread.sleep(2000);
+	  
+	  driver.findElement(By.xpath("//button[@ng-Class='btnClass1']")).click();
+	  
+	  Thread.sleep(2000);
+	  
+	  List<WebElement> allText = driver.findElements(By.xpath("//table[@class='table table-bordered table-striped']"));
+
+      int total = allText.size();
+      System.out.println(total);
+      for(int i=3;i<=total;i++){
+          String CaselevelSigningCMs =driver.findElement(By.xpath("//*[@id='pnlLeftMenu']/table/tbody/tr/td[2]/table[2]/tbody/tr[3]/td/table/tbody/tr"+"["+i+"]"+"/td[2]")).getText();
+          System.out.println(CaselevelSigningCMs);
+          }
+	  
+  }
+}
